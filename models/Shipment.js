@@ -5,6 +5,7 @@ const ShipmentSchema = new mongoose.Schema(
     country: String,
     customer: String,
     destination: String,
+    shipDate: String,
     ship_id: String,
     status: String,
     createdAt: {

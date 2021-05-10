@@ -8,3 +8,12 @@ exports.getShipments = async (req, res, next) => {
     data: shipments
   })
 };
+
+exports.createShipment = async (req, res, next) => {
+  const shipment = await Shipment.create(req.body);
+
+  res.status(200).json({
+    success: true,
+    data: shipment
+  });
+};
