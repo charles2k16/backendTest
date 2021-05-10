@@ -1,0 +1,32 @@
+{
+  "name": "shipnode",
+  "version": "1.0.0",
+  "description": "node backend for shipquest",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charles2k16/shipnode.git"
+  },
+  "keywords": [
+    "ship"
+  ],
+  "author": "charles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charles2k16/shipnode/issues"
+  },
+  "homepage": "https://github.com/charles2k16/shipnode#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.9",
+    "nodemon": "^2.0.5"
+  }
+}
