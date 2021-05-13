@@ -17,3 +17,15 @@ exports.createShipment = async (req, res, next) => {
     data: shipment
   });
 };
+
+exports.deleteShipment = async (req, res, next) => {
+  try {
+    const shipment = await Shipment.findById(req.params.id);
+
+    shipment.remove();
+
+    res.status(200).json({ success: true, data: {} });
+  } catch (err) {
+    next(err);
+  }
+};
