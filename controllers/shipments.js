@@ -18,6 +18,21 @@ exports.createShipment = async (req, res, next) => {
   });
 };
 
+exports.updateShipment = async (req, res, next) => {
+  const shipment = await Shipment.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+
+  if (!shipment) {
+    return next(
+      new ErrorHandler(`Shipment not found with id of ${req.params.id}`, 404)
+    );
+  }
+
+  res.status(200).json({ success: true, data: shipment });
+};
+
 exports.deleteShipment = async (req, res, next) => {
   try {
     const shipment = await Shipment.findById(req.params.id);

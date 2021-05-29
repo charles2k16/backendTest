@@ -2,6 +2,7 @@ const express = require('express');
 const {
   getShipments,
   createShipment,
+  updateShipment,
   deleteShipment
 } = require('../controllers/shipments');
 
@@ -16,6 +17,7 @@ router
 
 router
   .route('/:id')
+  .put(updateShipment)
   .delete(deleteShipment);
 
 module.exports = router;
