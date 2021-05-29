@@ -6,7 +6,7 @@ const ShipmentSchema = new mongoose.Schema(
     current_loc: String,
     customer: String,
     destination: String,
-    depart_date: String,
+    shipDate: String,
     status_date: String,
     ship_id: String,
     status: String,
