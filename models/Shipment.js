@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const ShipmentSchema = new mongoose.Schema(
   {
     country: String,
+    current_loc: String,
     customer: String,
     destination: String,
-    shipDate: String,
+    depart_date: String,
+    status_date: String,
     ship_id: String,
     status: String,
     description: String,
