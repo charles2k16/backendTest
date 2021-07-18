@@ -3,7 +3,8 @@ const {
   getShipments,
   createShipment,
   updateShipment,
-  deleteShipment
+  deleteShipment,
+  getShipmentByTracking
 } = require('../controllers/shipments');
 
 // const Shipment = require('../models/Shipment');
@@ -14,6 +15,8 @@ router
   .route('/')
   .get(getShipments)
   .post(createShipment);
+
+router.get('/track/:trackindId', getShipmentByTracking);
 
 router
   .route('/:id')

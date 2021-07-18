@@ -18,6 +18,19 @@ exports.createShipment = async (req, res, next) => {
   });
 };
 
+exports.getShipmentByTracking = async (req, res, next) => {
+  const shipments = await Shipment.find()
+
+  let trackShip = shipments.filter(function (farmer) {
+    return farmer.ship_id == req.params.trackindId
+  })
+
+  res.status(200).json({
+    success: true,
+    data: trackShip
+  })
+};
+
 exports.updateShipment = async (req, res, next) => {
   const shipment = await Shipment.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
