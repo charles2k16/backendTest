@@ -2,11 +2,12 @@ const path = require('path');
 const Shipment = require('../models/Shipment');
 
 exports.getShipments = async (req, res, next) => {
-  const shipments = await Shipment.find()
+  const shipments = await Shipment.find();
+  console.log(shipments);
   res.status(200).json({
     success: true,
-    data: shipments
-  })
+    data: shipments,
+  });
 };
 
 exports.createShipment = async (req, res, next) => {
@@ -14,27 +15,27 @@ exports.createShipment = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: shipment
+    data: shipment,
   });
 };
 
 exports.getShipmentByTracking = async (req, res, next) => {
-  const shipments = await Shipment.find()
+  const shipments = await Shipment.find();
 
   let trackShip = shipments.filter(function (farmer) {
-    return farmer.ship_id == req.params.trackindId
-  })
+    return farmer.ship_id == req.params.trackindId;
+  });
 
   res.status(200).json({
     success: true,
-    data: trackShip
-  })
+    data: trackShip,
+  });
 };
 
 exports.updateShipment = async (req, res, next) => {
   const shipment = await Shipment.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 
   if (!shipment) {
