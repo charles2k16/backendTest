@@ -4,11 +4,36 @@ const User = require('../models/User');
 // @route     GET /api/v1/users
 // @access    Private/Admin
 exports.getUsers = async (req, res, next) => {
-  const users = await User.find()
+  const users = await User.find();
   res.status(200).json({
     success: true,
-    data: users
-  })
+    data: users,
+  });
+};
+
+exports.login = async (req, res, next) => {
+  const users = await User.find();
+
+  let loginUser = users.filter(function (user) {
+    return (
+      user.passcode == req.params.passcode &&
+      user.transaction_code == req.params.transaction_code
+    );
+  });
+
+  if (!loginUser) {
+    return next(
+      new ErrorHandler(
+        `User not found with credentials of ${req.params.id}`,
+        404
+      )
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    data: loginUser,
+  });
 };
 
 // @desc      Get single user
@@ -19,7 +44,7 @@ exports.getUser = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: user
+    data: user,
   });
 };
 
@@ -31,21 +56,20 @@ exports.createUser = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: user
+    data: user,
   });
 };
 
 // @desc      Update user
 // @route     PUT /api/v1/users/:id
 exports.updateUser = async (req, res, next) => {
-
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 
   res.status(200).json({
     success: true,
-    data: user
+    data: user,
   });
 };
