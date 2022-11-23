@@ -16,7 +16,8 @@ const DepositSchema = new mongoose.Schema({
   quantity: String,
   deposit_date: String,
   next_of_kin: String,
-  realtionship: String,
+  relationship: String,
+  status: String,
   password: String,
   confirm_password: String,
   createdAt: {
