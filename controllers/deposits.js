@@ -9,6 +9,15 @@ exports.getDeposits = async (req, res, next) => {
   });
 };
 
+exports.getDeposit = async (req, res, next) => {
+  const dep = await Deposit.findById(req.params.id);
+
+  res.status(200).json({
+    success: true,
+    data: dep,
+  });
+};
+
 exports.createDeposit = async (req, res, next) => {
   const dep = await Deposit.create(req.body);
 
@@ -38,9 +47,7 @@ exports.updateDeposit = async (req, res, next) => {
   });
 
   if (!dep) {
-    return next(
-      new ErrorHandler(`Access not found with id of ${req.params.id}`, 404)
-    );
+    return next(new ErrorHandler(`Access not found with id of ${req.params.id}`, 404));
   }
 
   res.status(200).json({ success: true, data: dep });

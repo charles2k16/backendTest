@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   getDeposits,
+  getDeposit,
   createDeposit,
   updateDeposit,
   deleteDeposit,
@@ -15,6 +16,6 @@ router.route('/').get(getDeposits).post(createDeposit);
 
 router.get('/track/:password', getDepositByPassword);
 
-router.route('/:id').put(updateDeposit).delete(deleteDeposit);
+router.route('/:id').get(getDeposit).put(updateDeposit).delete(deleteDeposit);
 
 module.exports = router;
