@@ -16,10 +16,11 @@ const users = require('./routes/users');
 const shipments = require('./routes/shipments');
 const deposits = require('./routes/deposits');
 const otp = require('./routes/otp');
+const accounts = require('./routes/accounts');
 
 const app = express();
 
-// Body parser
+// Body parse
 app.use(express.json());
 
 // Enable CORS
@@ -33,6 +34,7 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/shipments', shipments);
 app.use('/api/v1/deposits', deposits);
 app.use('/api/v1/otp', otp);
+app.use('/api/v1/accounts', accounts);
 
 const PORT = process.env.PORT || 8000;
 

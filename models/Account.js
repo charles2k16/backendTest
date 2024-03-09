@@ -5,7 +5,6 @@ const AccountSchema = new mongoose.Schema({
   account_number: Number,
   account_type: String,
   balance: Number,
-  email: String,
   reserved_funds: Number,
   minimum_balance: Number,
   pending_depts: Number,

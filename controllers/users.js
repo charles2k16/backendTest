@@ -59,11 +59,24 @@ exports.getUser = async (req, res, next) => {
 // @route     POST /api/v1/users
 // @access    Private/Admin
 exports.createUser = async (req, res, next) => {
-  const user = await User.create(req.body);
+  // check for dulicate user details by email
+  const user = await User.findOne({
+    email: req.body.email,
+  });
 
-  res.status(200).json({
+  if (user) {
+    // return staus 400 json error message
+    return res.status(400).json({
+      success: false,
+      error: 'User already exists',
+    });
+  }
+
+  const newUser = await User.create(req.body);
+
+  res.status(201).json({
     success: true,
-    data: user,
+    data: newUser,
   });
 };
 

@@ -32,8 +32,6 @@ exports.sendOTP = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'OTP sent successfully',
-      otpBody,
-      user: checkUserPresent,
     });
   } catch (error) {
     console.log(error.message);
@@ -51,10 +49,14 @@ exports.verifyOTP = async (req, res) => {
         message: 'Invalid OTP',
       });
     }
+
+    // add user to the response by using the email
+    const user = await User.findOne({ email });
+
     res.status(200).json({
       success: true,
       message: 'OTP verified successfully',
-      otpBody,
+      user,
     });
   } catch (error) {
     console.log(error.message);

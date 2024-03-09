@@ -33,7 +33,7 @@ exports.authLogin = async (req, res, next) => {
   }
 
   // Check for user
-  const user = await User.findOne({ email }).select('+passcode');
+  const user = await User.findOne({ email, passcode }).select('+passcode');
 
   if (!user) {
     // return status 401 to indicate unauthorized
@@ -42,22 +42,8 @@ exports.authLogin = async (req, res, next) => {
       .json({ success: false, error: 'Invalid credentials' });
   }
 
-  const users = await User.find();
-
-  let loginUser = users.filter(function (user) {
-    return user.email == email && user.passcode == passcode;
-  });
-
-  if (!loginUser) {
-    // return staus 404 json error message
-    return res.status(404).json({
-      success: false,
-      error: 'Authentication failed!',
-    });
-  }
-
   res.status(200).json({
     success: true,
-    data: loginUser,
+    message: 'User logged in successfully',
   });
 };
