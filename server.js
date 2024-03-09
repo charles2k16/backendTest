@@ -26,7 +26,7 @@ app.use(express.json());
 // Enable CORS
 app.use(cors());
 
-// Set static folder
+// Set static folderr
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount Routers
