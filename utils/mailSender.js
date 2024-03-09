@@ -12,12 +12,11 @@ const mailSender = async (email, title, body) => {
     });
     // Send emails to users
     let info = await transporter.sendMail({
-      from: 'www.sandeepdev.me - Sandeep Singh',
+      from: 'banking.rulinecredit.com/ - Ruline Credit',
       to: email,
       subject: title,
       html: body,
     });
-    console.log('Email info: ', info);
     return info;
   } catch (error) {
     console.log(error.message);
