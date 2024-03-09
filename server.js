@@ -15,6 +15,7 @@ connectDB();
 const users = require('./routes/users');
 const shipments = require('./routes/shipments');
 const deposits = require('./routes/deposits');
+const otp = require('./routes/otp');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/users', users);
 app.use('/api/v1/shipments', shipments);
 app.use('/api/v1/deposits', deposits);
+app.use('/api/v1/otp', otp);
 
 const PORT = process.env.PORT || 8000;
 

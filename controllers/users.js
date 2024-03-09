@@ -22,12 +22,11 @@ exports.login = async (req, res, next) => {
   });
 
   if (!loginUser) {
-    return next(
-      new ErrorHandler(
-        `User not found with credentials of ${req.params.id}`,
-        404
-      )
-    );
+    // return staus 404 json error message
+    return res.status(404).json({
+      success: false,
+      error: 'Authentication failed!',
+    });
   }
 
   res.status(200).json({
@@ -41,6 +40,14 @@ exports.login = async (req, res, next) => {
 // @access    Private/Admin
 exports.getUser = async (req, res, next) => {
   const user = await User.findById(req.params.id);
+
+  if (!user) {
+    // return staus 404 json error message
+    return res.status(404).json({
+      success: false,
+      error: 'User not found',
+    });
+  }
 
   res.status(200).json({
     success: true,
