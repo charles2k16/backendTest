@@ -9,6 +9,9 @@ const TransactionSchema = new mongoose.Schema({
   fee: {
     type: String,
   },
+  status: {
+    type: String,
+  },
   balance: {
     type: String,
   },
