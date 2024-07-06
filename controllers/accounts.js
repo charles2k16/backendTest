@@ -18,6 +18,23 @@ exports.createAccount = async (req, res, next) => {
   });
 };
 
+// get single account
+exports.getAccount = async (req, res, next) => {
+  const account = await Account.findById(req.params.id);
+
+  if (!account) {
+    return res.status(404).json({
+      success: false,
+      error: 'Account not found',
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    data: account,
+  });
+};
+
 exports.getAccountByUserId = async (req, res, next) => {
   const accounts = await Account.find();
 
@@ -36,7 +53,7 @@ exports.getAccountByUserId = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    data: userAccount[0],
+    data: userAccount,
   });
 };
 
