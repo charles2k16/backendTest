@@ -12,7 +12,7 @@ const mailSender = async (email, title, body) => {
     });
     // Send emails to users
     let info = await transporter.sendMail({
-      from: 'banking.rulinecredit.com/ - Ruline Credit',
+      from: 'Credit union mailing list',
       to: email,
       subject: title,
       html: body,

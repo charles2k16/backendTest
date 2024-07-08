@@ -44,13 +44,6 @@ exports.getAccountByUserId = async (req, res, next) => {
 
   console.log(userAccount);
 
-  if (userAccount.length === 0) {
-    return res.status(404).json({
-      success: false,
-      error: 'Account not found',
-    });
-  }
-
   res.status(200).json({
     success: true,
     data: userAccount,
