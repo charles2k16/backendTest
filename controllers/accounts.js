@@ -42,7 +42,14 @@ exports.getAccountByUserId = async (req, res, next) => {
     return acc.user == req.params.userId;
   });
 
-  console.log(userAccount);
+  // console.log(userAccount);
+
+  if (!userAccount) {
+    return res.status(200).json({
+      success: true,
+      data: [],
+    });
+  }
 
   res.status(200).json({
     success: true,
