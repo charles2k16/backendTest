@@ -4,7 +4,7 @@ const {
   getMillShipment,
   getShipmentByUserId,
   updateShipment,
-  deleteShipment,
+  getShipmentByShipId,
 } = require('../controllers/millenniumShips');
 
 const router = express.Router();
@@ -13,7 +13,9 @@ router.route('/').post(createMillShipment);
 
 router.route('/user/:userId').get(getShipmentByUserId);
 
-router.route('/:id').put(updateShipment).delete(deleteShipment);
+router.route('/:shipId').get(getShipmentByShipId);
+
+router.route('/:id').put(updateShipment);
 
 router.route('/:id').get(getMillShipment);
 

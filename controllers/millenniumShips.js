@@ -26,6 +26,27 @@ exports.getMillShipment = async (req, res, next) => {
   });
 };
 
+exports.getShipmentByShipId = async (req, res, next) => {
+  const mill = await Millennium.find();
+
+  let userShipment = mill.filter(function (acc) {
+    return acc.ship_id == req.params.shipId;
+  });
+
+  if (!userShipment) {
+    return res.status(200).json({
+      success: true,
+      data: [],
+      message: 'No shipment found',
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    data: userShipment[0],
+  });
+};
+
 exports.getShipmentByUserId = async (req, res, next) => {
   const mill = await Millennium.find();
 
@@ -37,12 +58,13 @@ exports.getShipmentByUserId = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       data: [],
+      message: 'No shipment found',
     });
   }
 
   res.status(200).json({
     success: true,
-    data: userShipment,
+    data: userShipment[0],
   });
 };
 

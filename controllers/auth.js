@@ -39,11 +39,16 @@ exports.authLogin = async (req, res, next) => {
     // return status 401 to indicate unauthorized
     return res
       .status(401)
-      .json({ success: false, error: 'Invalid credentials' });
+      .json({
+        success: false,
+        error: 'Invalid credentials',
+        message: 'invalid credentials',
+      });
   }
 
   res.status(200).json({
     success: true,
     message: 'User logged in successfully',
+    data: user,
   });
 };
