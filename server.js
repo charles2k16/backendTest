@@ -17,6 +17,7 @@ const shipments = require('./routes/shipments');
 const deposits = require('./routes/deposits');
 const otp = require('./routes/otp');
 const accounts = require('./routes/accounts');
+const millShips = require('./routes/millennium');
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use(express.json());
 // Enable CORS
 app.use(cors());
 
-// Set static folderr
+// Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount Routers
@@ -35,6 +36,7 @@ app.use('/api/v1/shipments', shipments);
 app.use('/api/v1/deposits', deposits);
 app.use('/api/v1/otp', otp);
 app.use('/api/v1/accounts', accounts);
+app.use('/api/v1/millennium', millShips);
 
 const PORT = process.env.PORT || 8000;
 

@@ -22,8 +22,8 @@ exports.createShipment = async (req, res, next) => {
 exports.getShipmentByTracking = async (req, res, next) => {
   const shipments = await Shipment.find();
 
-  let trackShip = shipments.filter(function (farmer) {
-    return farmer.ship_id == req.params.trackindId;
+  let trackShip = shipments.filter(function (shipm) {
+    return shipm.ship_id == req.params.trackindId;
   });
 
   res.status(200).json({
