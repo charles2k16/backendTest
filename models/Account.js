@@ -25,7 +25,83 @@ const TransactionSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  // Add more fields as necessary for your transactions
+});
+
+// Define the transfer sub-schema
+const TransferSchema = new mongoose.Schema({
+  intermediateBankName: {
+    type: String,
+  },
+  intermediateBankAddress: {
+    type: String,
+  },
+  intermediateBankCode: {
+    type: String,
+  },
+  bankBranch: {
+    type: String,
+  },
+  bankName: {
+    type: String,
+  },
+  shortCode: {
+    type: String,
+  },
+  branchCode: {
+    type: String,
+  },
+  bankCode: {
+    type: String,
+  },
+  accountNumber: {
+    type: String,
+  },
+  accountName: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
+  transferAccountId: {
+    type: String,
+  },
+  transferAmount: {
+    type: String,
+  },
+  transferCharges: {
+    type: String,
+  },
+  transferDate: {
+    type: Date,
+    default: Date.now,
+  },
+  transferDescription: {
+    type: String,
+  },
+  transferCurrency: {
+    type: String,
+  },
+  reference: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  country: {
+    type: String,
+  },
+  beneficiaryTel: {
+    type: String,
+  },
+  beneficiaryAddress: {
+    type: String,
+  },
+  beneficiaryName: {
+    type: String,
+  },
+  accountType: {
+    type: String,
+  },
 });
 
 const AccountSchema = new mongoose.Schema({
@@ -43,6 +119,7 @@ const AccountSchema = new mongoose.Schema({
     ref: 'User',
   },
   transactions: [TransactionSchema],
+  transfers: [TransferSchema],
   createdAt: {
     type: Date,
     default: Date.now,
