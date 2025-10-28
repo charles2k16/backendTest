@@ -66,9 +66,17 @@ exports.verifyOTP = async (req, res) => {
 
 // get all OTPs
 exports.getOTPs = async (req, res, next) => {
-  const otps = await OTP.find();
-  res.status(200).json({
-    success: true,
-    data: otps,
-  });
+  try {
+    const otps = await OTP.find();
+    if (!otps) {
+      return res.status(404).json({ success: false, error: 'No OTPs found' });
+    }
+    res.status(200).json({
+      success: true,
+      data: otps,
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ success: false, error: 'Server error get otps' });
+  }
 };
